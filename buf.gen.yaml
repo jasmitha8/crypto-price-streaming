@@ -1,0 +1,17 @@
+version: v2
+plugins:
+  # Backend stubs - using local plugins
+  - local: protoc-gen-es
+    out: packages/backend/src/gen
+    opt: target=ts
+  - local: protoc-gen-connect-es
+    out: packages/backend/src/gen
+    opt: target=ts
+
+  # Frontend stubs - using local plugins  
+  - local: protoc-gen-es
+    out: packages/web/src/gen
+    opt: target=ts
+  - local: protoc-gen-connect-es
+    out: packages/web/src/gen
+    opt: target=ts

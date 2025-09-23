@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package pricefeed.v1;
+
+message SubscribeRequest {
+  string ticker = 1; // e.g., "BTCUSD"
+  string exchange = 2; // fixed to "BINANCE" per spec
+}
+
+message PriceUpdate {
+  string ticker = 1;
+  string exchange = 2;
+  double price = 3;
+  int64  ts_unix_ms = 4;
+}
+
+service PriceFeedService {
+  rpc Subscribe(SubscribeRequest) returns (stream PriceUpdate);
+}
